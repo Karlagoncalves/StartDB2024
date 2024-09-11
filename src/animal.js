@@ -1,11 +1,7 @@
 class Animal {
-
     nome;
-
     bioma;
-
     isCarnivoro;
-
     tamanho;
 
     constructor(nome, bioma, isCarnivoro, tamanho){
@@ -14,7 +10,6 @@ class Animal {
         this.isCarnivoro = isCarnivoro
         this.tamanho = tamanho
     }
-
 
 }
 

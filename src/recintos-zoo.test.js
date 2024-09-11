@@ -1,6 +1,6 @@
 import { RecintosZoo } from "./recintos-zoo.js";
 import { Bioma } from "./constants.js";
-import { Animais } from "./constants.js";
+import { Animais, AnimaisObjeto } from "./constants.js";
 
 describe('Recintos do Zoologico', () => {
 
@@ -43,7 +43,9 @@ describe('Recintos do Zoologico', () => {
     test('isRecintoCompativel deve retornar true quando recinto estiver vazio', () => {
 
         const recintoVazio = { numero: 2, bioma: [Bioma.FLORESTA], tamanhoTotal: 5, animaisExistentes: [] }
-        const resultado = new RecintosZoo().isRecintoCompativel(recintoVazio, 'MACACO');
+        const animal = AnimaisObjeto.MACACO
+
+        const resultado = new RecintosZoo().isRecintoCompativel(recintoVazio, animal);
 
         expect(resultado).toBe(true);
     });
@@ -51,9 +53,9 @@ describe('Recintos do Zoologico', () => {
     test('isRecintoCompativel deve retornar true quando recinto for carnivoro e animal carnivoro', () => {
 
         const recintoCarnivoro = { numero: 5, bioma: [Bioma.SAVANA], tamanhoTotal: 9, animaisExistentes: [{ especie: Animais.LEAO, quantidade: 1 }]}
+        const animal = AnimaisObjeto.LEOPARDO
 
-
-        const resultado = new RecintosZoo().isRecintoCompativel(recintoCarnivoro, 'LEOPARDO');
+        const resultado = new RecintosZoo().isRecintoCompativel(recintoCarnivoro, animal);
 
         expect(resultado).toBe(true);
     });
@@ -61,9 +63,9 @@ describe('Recintos do Zoologico', () => {
     test('isRecintoCompativel deve retornar false quando recinto for nao carnivoro e animal carnivoro', () => {
 
         const recintoNaoCarnivoro = { numero: 3, bioma: [Bioma.SAVANA, Bioma.RIO], tamanhoTotal: 7, animaisExistentes: [{ especie: Animais.GAZELA, quantidade: 1 }] }
+        const animal = AnimaisObjeto.LEAO
 
-
-        const resultado = new RecintosZoo().isRecintoCompativel(recintoNaoCarnivoro, 'LEAO');
+        const resultado = new RecintosZoo().isRecintoCompativel(recintoNaoCarnivoro, animal);
 
         expect(resultado).toBe(false);
     });
